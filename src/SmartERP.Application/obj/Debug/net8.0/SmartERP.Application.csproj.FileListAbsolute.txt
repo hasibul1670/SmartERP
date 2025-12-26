@@ -1,0 +1,15 @@
+/Users/MAC/Projects/SmartERP/src/SmartERP.Application/bin/Debug/net8.0/SmartERP.Application.deps.json
+/Users/MAC/Projects/SmartERP/src/SmartERP.Application/bin/Debug/net8.0/SmartERP.Application.dll
+/Users/MAC/Projects/SmartERP/src/SmartERP.Application/bin/Debug/net8.0/SmartERP.Application.pdb
+/Users/MAC/Projects/SmartERP/src/SmartERP.Application/bin/Debug/net8.0/SmartERP.Domain.dll
+/Users/MAC/Projects/SmartERP/src/SmartERP.Application/bin/Debug/net8.0/SmartERP.Domain.pdb
+/Users/MAC/Projects/SmartERP/src/SmartERP.Application/obj/Debug/net8.0/SmartERP.Application.csproj.AssemblyReference.cache
+/Users/MAC/Projects/SmartERP/src/SmartERP.Application/obj/Debug/net8.0/SmartERP.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/MAC/Projects/SmartERP/src/SmartERP.Application/obj/Debug/net8.0/SmartERP.Application.AssemblyInfoInputs.cache
+/Users/MAC/Projects/SmartERP/src/SmartERP.Application/obj/Debug/net8.0/SmartERP.Application.AssemblyInfo.cs
+/Users/MAC/Projects/SmartERP/src/SmartERP.Application/obj/Debug/net8.0/SmartERP.Application.csproj.CoreCompileInputs.cache
+/Users/MAC/Projects/SmartERP/src/SmartERP.Application/obj/Debug/net8.0/SmartERP.D3A10176.Up2Date
+/Users/MAC/Projects/SmartERP/src/SmartERP.Application/obj/Debug/net8.0/SmartERP.Application.dll
+/Users/MAC/Projects/SmartERP/src/SmartERP.Application/obj/Debug/net8.0/refint/SmartERP.Application.dll
+/Users/MAC/Projects/SmartERP/src/SmartERP.Application/obj/Debug/net8.0/SmartERP.Application.pdb
+/Users/MAC/Projects/SmartERP/src/SmartERP.Application/obj/Debug/net8.0/ref/SmartERP.Application.dll
