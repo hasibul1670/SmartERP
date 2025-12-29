@@ -1,15 +1,9 @@
-﻿using System;
+using Microsoft.EntityFrameworkCore;
 using SmartERP.Domain.Entities;
 
-namespace SmartERP.Infrastructure.Persistence.RelationalDB;
+namespace SmartERP.Persistence.RelationalDB;
 
-public class SmartERPDbContext
+public class SmartERPDbContext(DbContextOptions<SmartERPDbContext> options) : DbContext(options)
 {
-    public SmartERPDbContext(DbContextOptions<SmartERPDbContext> options) : base(options) { }
-
     public DbSet<User> Users => Set<User>();
-}
-
-public class DbContextOptions<T>
-{
 }
