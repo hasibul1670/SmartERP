@@ -16,13 +16,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Common\Behaviors\" />
-      <Folder Include="Common\Exceptions\" />
-      <Folder Include="Common\Interfaces\" />
-      <Folder Include="ProductCategories\Queries\" />
-      <Folder Include="Products\Commands\" />
-      <Folder Include="Products\Dtos\" />
-      <Folder Include="Products\Queries\" />
+        <Folder Include="Common\Behaviors\"/>
+        <Folder Include="Common\Exceptions\"/>
+        <Folder Include="Common\Interfaces\"/>
+        <Folder Include="Products\Commands\"/>
+        <Folder Include="Products\Queries\"/>
     </ItemGroup>
 
 </Project>
