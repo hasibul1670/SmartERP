@@ -4,11 +4,9 @@ namespace SmartERP.Domain.Aggregates.ProductCategoryAggregate;
 
 public class ProductCategory
 {
-    private ProductCategory()
-    {
-    }
-
-    public int Id { get; set; }
+    public int Id { get; private set; } // keep identity
+    public Guid Uid { get; private set; }
+    public string ProductCategoryId { get; private set; } = null!;
     public string? CategoryName { get; set; }
     public string? Description { get; set; }
 
@@ -19,8 +17,14 @@ public class ProductCategory
 
         return Result<ProductCategory>.Success(new ProductCategory
         {
+            Uid = Guid.NewGuid(),
             CategoryName = name.Trim(),
             Description = description?.Trim()
         });
+    }
+
+    public void SetProductCategoryId(string productCategoryId)
+    {
+        ProductCategoryId = productCategoryId;
     }
 }

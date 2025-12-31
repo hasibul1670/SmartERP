@@ -12,12 +12,14 @@ internal sealed class ProductCategoryConfiguration : IEntityTypeConfiguration<Pr
         builder.ToTable("ProductCategories");
 
         builder.HasKey(x => x.Id);
-
+        builder.Property(x => x.Uid)
+            .HasDefaultValueSql("gen_random_uuid()");
         builder.Property(x => x.CategoryName)
             .IsRequired()
             .HasMaxLength(100);
 
         builder.Property(x => x.Description)
-            .HasMaxLength(500);
+            .HasMaxLength(100);
+        builder.Property(x => x.ProductCategoryId);
     }
 }

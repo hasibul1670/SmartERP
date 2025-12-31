@@ -6,4 +6,4 @@ namespace SmartERP.Application.ProductCategories.Commands.CreateProductCategory;
 public sealed record CreateProductCategoryCommand(
     string CategoryName,
     string? Description
-) : IRequest<Result<int>>;
+) : IRequest<Result<Guid>>;

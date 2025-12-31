@@ -5,7 +5,7 @@
 namespace SmartERP.Persistence.RelationalDB.Migrations
 {
     /// <inheritdoc />
-    public partial class Test001 : Migration
+    public partial class ree : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

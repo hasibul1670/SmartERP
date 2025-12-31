@@ -5,7 +5,10 @@ using SmartERP.Api.Conventions;
 using SmartERP.Application.ProductCategories.Commands.CreateProductCategory;
 using SmartERP.Domain.Aggregates.ProductCategoryAggregate;
 using SmartERP.Persistence.RelationalDB;
+using SmartERP.Persistence.RelationalDB.Common.Ids;
+using SmartERP.Persistence.RelationalDB.Common.Interfaces;
 using SmartERP.Persistence.RelationalDB.Repositories;
+
 // ✅ add these (adjust namespaces to yours)
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,7 +32,7 @@ builder.Services.AddMediatR(cfg =>
 
 // ✅ Repository registration (next required dependency)
 builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
-
+builder.Services.AddScoped<ISequenceService, SequenceService>();
 // ✅ Serilog
 builder.Host.UseSerilog((ctx, lc) =>
 {

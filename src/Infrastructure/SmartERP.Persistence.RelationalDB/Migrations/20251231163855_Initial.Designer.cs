@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SmartERP.Persistence.RelationalDB;
@@ -11,9 +12,11 @@ using SmartERP.Persistence.RelationalDB;
 namespace SmartERP.Persistence.RelationalDB.Migrations
 {
     [DbContext(typeof(SmartERPDbContext))]
-    partial class SmartERPDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251231163855_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
