@@ -1,20 +1,40 @@
 using Microsoft.EntityFrameworkCore;
-using Serilog.Events;
 using Serilog;
+using Serilog.Events;
+using SmartERP.Api.Conventions;
+using SmartERP.Application.ProductCategories.Commands.CreateProductCategory;
+using SmartERP.Domain.Aggregates.ProductCategoryAggregate;
 using SmartERP.Persistence.RelationalDB;
+using SmartERP.Persistence.RelationalDB.Repositories;
+// ✅ add these (adjust namespaces to yours)
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.WebHost.UseUrls("http://localhost:6001");
-builder.Services.AddControllers();
+
+// ✅ Keep only ONE AddControllers
+builder.Services.AddControllers(options =>
+{
+    options.Conventions.Insert(0, new GlobalRoutePrefixConvention("api/v1"));
+});
+
 builder.Services.AddDbContext<SmartERPDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("SmartERP")));
+
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
+
+// ✅ MediatR registration (this fixes IMediator error)
+builder.Services.AddMediatR(cfg =>
+    cfg.RegisterServicesFromAssembly(typeof(CreateProductCategoryCommand).Assembly));
+
+// ✅ Repository registration (next required dependency)
+builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
 
 // ✅ Serilog
 builder.Host.UseSerilog((ctx, lc) =>
 {
     lc.MinimumLevel.Information()
-        .MinimumLevel.Override("Microsoft", LogEventLevel.Warning) 
+        .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
         .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
         .Enrich.FromLogContext()
         .WriteTo.Console(outputTemplate:
@@ -22,6 +42,7 @@ builder.Host.UseSerilog((ctx, lc) =>
 });
 
 var app = builder.Build();
+
 app.UseSerilogRequestLogging(options =>
 {
     options.EnrichDiagnosticContext = (diag, http) =>
@@ -30,12 +51,10 @@ app.UseSerilogRequestLogging(options =>
         diag.Set("RequestScheme", http.Request.Scheme);
     };
 });
-app.MapControllers();
-app.MapControllerRoute(
-    "api",
-    "api/v1/{controller}/{action?}/{id?}");
 
-//Test API
+app.MapControllers();
+
+// Test API
 app.MapGet("/api/v1/status", () => Results.Ok("Server is ON!"));
 app.MapGet("/api/v1/db-check", async (SmartERPDbContext db) =>
 {

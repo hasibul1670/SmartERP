@@ -22,4 +22,10 @@
         <ProjectReference Include="../../Infrastructure/SmartERP.Persistence.RelationalDB/SmartERP.Persistence.RelationalDB.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <Folder Include="Features\ProductCategories\Models\"/>
+        <Folder Include="Features\Product\Endpoints\"/>
+        <Folder Include="Features\Product\Models\"/>
+    </ItemGroup>
+
 </Project>
