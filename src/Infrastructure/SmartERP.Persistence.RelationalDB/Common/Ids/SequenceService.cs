@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SmartERP.Persistence.RelationalDB.Common.Interfaces;
-
+//change namespace here 
 namespace SmartERP.Persistence.RelationalDB.Common.Ids;
 
 public class SequenceService(SmartERPDbContext db) : ISequenceService
