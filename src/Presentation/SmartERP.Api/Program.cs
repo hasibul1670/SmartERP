@@ -3,7 +3,7 @@ using Serilog;
 using Serilog.Events;
 using SmartERP.Api.Conventions;
 using SmartERP.Application.ProductCategories.Commands.CreateProductCategory;
-using SmartERP.Domain.Aggregates.ProductCategoryAggregate;
+using SmartERP.Application.ProductCategories.Interfaces;
 using SmartERP.Persistence.RelationalDB;
 using SmartERP.Persistence.RelationalDB.Common.Ids;
 using SmartERP.Persistence.RelationalDB.Common.Interfaces;
