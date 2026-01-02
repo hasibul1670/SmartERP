@@ -12,8 +12,8 @@ using SmartERP.Persistence.RelationalDB;
 namespace SmartERP.Persistence.RelationalDB.Migrations
 {
     [DbContext(typeof(SmartERPDbContext))]
-    [Migration("20251231164447_test")]
-    partial class test
+    [Migration("20260102102528_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
