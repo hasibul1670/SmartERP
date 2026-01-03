@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SmartERP.Application.ProductCategories.Interfaces;
 using SmartERP.Domain.Aggregates.ProductCategoryAggregate;
 using SmartERP.Persistence.RelationalDB.Common.Interfaces;
 

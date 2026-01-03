@@ -1,4 +1,5 @@
 using MediatR;
+using SmartERP.Application.ProductCategories.Interfaces;
 using SmartERP.Domain.Aggregates.ProductCategoryAggregate;
 using SmartERP.Domain.Common;
 
