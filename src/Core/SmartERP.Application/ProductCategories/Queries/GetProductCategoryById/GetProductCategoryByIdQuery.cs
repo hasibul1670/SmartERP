@@ -1,6 +1,6 @@
-namespace SmartERP.Application.ProductCategories.Queries;
+using MediatR;
+using SmartERP.Application.ProductCategories.Dtos;
 
-public class GetProductCategoryByIdQuery
-{
-    
-}
+namespace SmartERP.Application.ProductCategories.Queries.GetProductCategoryById;
+
+public sealed record GetProductCategoryByIdQuery(Guid Uid) : IRequest<ProductCategoryDto?>;

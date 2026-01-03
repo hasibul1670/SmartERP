@@ -8,9 +8,6 @@ namespace SmartERP.Api.Features.ProductCategories.Endpoints;
 
 public sealed class CreateProductCategoryEndpoint(IMediator mediator) : ProductCategoriesEndpointBase
 {
-    // private readonly IMediator _mediator;
-
-    // public CreateProductCategoryEndpoint(IMediator mediator)=> _mediator = mediator;
     [HttpPost]
     public async Task<ActionResult> Post(CreateProductCategoryRequest model, CancellationToken ct)
     {
@@ -21,7 +18,7 @@ public sealed class CreateProductCategoryEndpoint(IMediator mediator) : ProductC
         var location = $"/api/v1/product-categories/{result.Value}";
         var responseBody = new
         {
-            id = result.Value,
+            uid = result.Value,
             categoryName = model.CategoryName,
             description = model.Description
         };

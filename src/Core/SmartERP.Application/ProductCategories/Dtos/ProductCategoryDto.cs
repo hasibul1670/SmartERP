@@ -3,6 +3,8 @@ namespace SmartERP.Application.ProductCategories.Dtos;
 public class ProductCategoryDto
 {
     public int Id { get; set; }
+    public Guid Uid { get; set; }
+    public string ProductCategoryId { get; set; } = default!;
     public string CategoryName { get; set; } = default!;
     public string? Description { get; set; }
 }

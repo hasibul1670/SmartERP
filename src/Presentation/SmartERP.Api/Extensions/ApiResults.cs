@@ -20,4 +20,9 @@ public static class ApiResults
     {
         return c.BadRequest(ApiResponse<object>.Fail(message, 400, errors, c.HttpContext.TraceIdentifier));
     }
+
+    public static ActionResult ApiNotFound(this ControllerBase c, string message, object? errors = null)
+    {
+        return c.NotFound(ApiResponse<object>.Fail(message, 404, errors, c.HttpContext.TraceIdentifier));
+    }
 }

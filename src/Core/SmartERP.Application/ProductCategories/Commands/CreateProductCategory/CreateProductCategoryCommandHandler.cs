@@ -1,5 +1,5 @@
 using MediatR;
-using SmartERP.Application.ProductCategories.Interfaces;
+using SmartERP.Application.ProductCategories.Repositories;
 using SmartERP.Domain.Aggregates.ProductCategoryAggregate;
 using SmartERP.Domain.Common;
 
@@ -12,7 +12,7 @@ public sealed class CreateProductCategoryCommandHandler(IProductCategoryReposito
         CreateProductCategoryCommand request,
         CancellationToken cancellationToken)
     {
-        var exists = await repository.ExistsByNameAsync(request.CategoryName, cancellationToken);
+        var exists = await repository.ExistsByNameAsync(request.CategoryName, null, cancellationToken);
         if (exists)
             return Result<Guid>.Failure("Category name already exists.");
 

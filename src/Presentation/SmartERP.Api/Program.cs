@@ -1,15 +1,17 @@
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Serilog.Events;
+using FluentValidation;
+using MediatR;
 using SmartERP.Api.Conventions;
+using SmartERP.Api.Middleware;
+using SmartERP.Application.Common.Behaviors;
 using SmartERP.Application.ProductCategories.Commands.CreateProductCategory;
-using SmartERP.Application.ProductCategories.Interfaces;
+using SmartERP.Application.ProductCategories.Repositories;
 using SmartERP.Persistence.RelationalDB;
 using SmartERP.Persistence.RelationalDB.Common.Ids;
 using SmartERP.Persistence.RelationalDB.Common.Interfaces;
-using SmartERP.Persistence.RelationalDB.Repositories;
-
-// ✅ add these (adjust namespaces to yours)
+using SmartERP.Persistence.RelationalDB.ProductCategories.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +32,9 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssembly(typeof(CreateProductCategoryCommand).Assembly));
 
+builder.Services.AddValidatorsFromAssembly(typeof(CreateProductCategoryCommand).Assembly);
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
 // ✅ Repository registration (next required dependency)
 builder.Services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
 builder.Services.AddScoped<ISequenceService, SequenceService>();
@@ -46,6 +51,8 @@ builder.Host.UseSerilog((ctx, lc) =>
 
 var app = builder.Build();
 
+app.UseMiddleware<CorrelationIdMiddleware>();
+
 app.UseSerilogRequestLogging(options =>
 {
     options.EnrichDiagnosticContext = (diag, http) =>
@@ -54,6 +61,8 @@ app.UseSerilogRequestLogging(options =>
         diag.Set("RequestScheme", http.Request.Scheme);
     };
 });
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapControllers();
 
