@@ -11,6 +11,7 @@ public sealed class CreateProductCategoryEndpoint(IMediator mediator) : ProductC
     [HttpPost]
     public async Task<ActionResult> Post(CreateProductCategoryRequest model, CancellationToken ct)
     {
+        //test
         var command = new CreateProductCategoryCommand(model.CategoryName, model.Description);
         var result = await mediator.Send(command, ct);
         if (!result.IsSuccess)
